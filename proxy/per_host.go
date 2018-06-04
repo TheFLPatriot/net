@@ -5,6 +5,7 @@
 package proxy
 
 import (
+	"context"
 	"net"
 	"strings"
 )
@@ -40,7 +41,19 @@ func (p *PerHost) Dial(network, addr string) (c net.Conn, err error) {
 
 	return p.dialerForRequest(host).Dial(network, addr)
 }
+func (p *PerHost) DialContext(ctx context.Context, network, addr string) (c net.Conn, err error) {
 
+	host, _, err := net.SplitHostPort(addr)
+
+	if err != nil {
+
+		return nil, err
+
+	}
+
+	return p.dialerForRequest(host).DialContext(ctx, network, addr)
+
+}
 func (p *PerHost) dialerForRequest(host string) Dialer {
 	if ip := net.ParseIP(host); ip != nil {
 		for _, net := range p.bypassNetworks {

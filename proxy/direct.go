@@ -5,6 +5,7 @@
 package proxy
 
 import (
+	"context"
 	"net"
 )
 
@@ -15,4 +16,8 @@ var Direct = direct{}
 
 func (direct) Dial(network, addr string) (net.Conn, error) {
 	return net.Dial(network, addr)
+}
+func (direct) DialContext(ctx context.Context, network, addr string) (net.Conn, error) {
+	var d net.Dialer
+	return d.DialContext(ctx, network, addr)
 }
