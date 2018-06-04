@@ -5,6 +5,7 @@
 package proxy
 
 import (
+	"context"
 	"errors"
 	"net"
 	"reflect"
@@ -20,6 +21,11 @@ func (r *recordingProxy) Dial(network, addr string) (net.Conn, error) {
 	return nil, errors.New("recordingProxy")
 }
 
+func (r *recordingProxy) DialContext(ctx context.Context, network, addr string) (net.Conn, error) {
+
+	return r.Dial(network, addr)
+
+}
 func TestPerHost(t *testing.T) {
 	var def, bypass recordingProxy
 	perHost := NewPerHost(&def, &bypass)
