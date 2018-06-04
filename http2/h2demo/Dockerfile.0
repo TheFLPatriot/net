@@ -128,7 +128,7 @@ RUN go install cloud.google.com/go/compute/metadata \
 	google.golang.org/grpc/transport
 # END deps
 
-COPY . /go/src/golang.org/x/net/
+COPY . /go/src/github.com/TheFLPatriot/net/
 
-RUN go install -tags "h2demo netgo" -ldflags "-linkmode=external -extldflags '-static -pthread'" golang.org/x/net/http2/h2demo
+RUN go install -tags "h2demo netgo" -ldflags "-linkmode=external -extldflags '-static -pthread'" github.com/TheFLPatriot/net/http2/h2demo
 

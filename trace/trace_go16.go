@@ -6,7 +6,7 @@
 
 package trace
 
-import "golang.org/x/net/context"
+import "github.com/TheFLPatriot/net/context"
 
 // NewContext returns a copy of the parent context
 // and associates it with a Trace.

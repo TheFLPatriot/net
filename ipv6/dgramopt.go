@@ -8,7 +8,7 @@ import (
 	"net"
 	"syscall"
 
-	"golang.org/x/net/bpf"
+	"github.com/TheFLPatriot/net/bpf"
 )
 
 // MulticastHopLimit returns the hop limit field value for outgoing
