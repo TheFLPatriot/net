@@ -8,7 +8,7 @@ import (
 	"net"
 	"syscall"
 
-	"golang.org/x/net/internal/socket"
+	"github.com/TheFLPatriot/net/internal/socket"
 )
 
 // BUG(mikio): On Windows, the ReadFrom and WriteTo methods of RawConn
